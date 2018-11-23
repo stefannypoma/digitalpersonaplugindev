@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="dpplugin" version="0.0.1">
+    <name>DPPlugin</name>
+
+    <description>An Android Cordova plugin that allows users to read from a digital persona device.</description>
+    <license>Apache 2.0</license>
+
+    <keywords>cordova,android,digitalpersona,eikontouch</keywords>
+    <repo>https://github.com/jcarraca/digitalpersonaplugin.git</repo>
+    <issue>https://github.com/jcarraca/digitalpersonaplugin/issues</issue>
+  
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+  
+    <js-module src="www/dpplugin.js" name="dpPlugin">
+        <clobbers target="window.plugins.dpPlugin" />
+    </js-module>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="DPPlugin">
+                <param name="android-package" value="pt.deloitte.entel.plugin.DPPlugin"/>
+            </feature>
+        </config-file>
+            
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+			<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+            
+        <source-file src="src/android/DPPlugin.java" target-dir="src/pt/deloitte/entel/plugin" />
+        <source-file src="src/android/definitions/DPFingerStatus.java" target-dir="src/pt/deloitte/entel/plugin/definitions" />
+        <source-file src="src/android/definitions/DPError.java" target-dir="src/pt/deloitte/entel/plugin/definitions" />
+        <source-file src="src/android/definitions/DPMessageType.java" target-dir="src/pt/deloitte/entel/plugin/definitions" />
+        <source-file src="src/android/definitions/DPStatus.java" target-dir="src/pt/deloitte/entel/plugin/definitions" />
+        <source-file src="src/android/DPManager.java" target-dir="src/pt/deloitte/entel/plugin" />
+        <source-file src="src/android/DPManagerCallback.java" target-dir="src/pt/deloitte/entel/plugin" />
+
+		<!-- SDK -->
+		<lib-file src="src/android/libs/dpuareu.jar"/>
+		
+		<!-- native libs Eikon -->
+		<resource-file src="src/android/libs/armeabi/libbiofp_e_lapi.so" target="libs/armeabi/libbiofp_e_lapi.so" />
+		<resource-file src="src/android/libs/armeabi/libdpfj.so" target="libs/armeabi/libdpfj.so" />
+		<resource-file src="src/android/libs/armeabi/libdpfpdd.so" target="libs/armeabi/libdpfpdd.so" />
+		<resource-file src="src/android/libs/armeabi/libdpfpdd_4k.so" target="libs/armeabi/libdpfpdd_4k.so" />
+		<resource-file src="src/android/libs/armeabi/libdpfpdd_ptapi.so" target="libs/armeabi/libdpfpdd_ptapi.so" />
+		<resource-file src="src/android/libs/armeabi/libdpfpdd5000.so" target="libs/armeabi/libdpfpdd5000.so" />
+		<resource-file src="src/android/libs/armeabi/libdpfr6.so" target="libs/armeabi/libdpfr6.so" />
+		<resource-file src="src/android/libs/armeabi/libdpfr7.so" target="libs/armeabi/libdpfr7.so" />
+		<resource-file src="src/android/libs/armeabi/libdpuareu_jni.so" target="libs/armeabi/libdpuareu_jni.so" />
+		<resource-file src="src/android/libs/armeabi/libdpuvc.so" target="libs/armeabi/libdpuvc.so" />
+		<resource-file src="src/android/libs/armeabi/libFingerILA.so" target="libs/armeabi/libFingerILA.so" />
+		<resource-file src="src/android/libs/armeabi/libtfm.so" target="libs/armeabi/libtfm.so" />
+		<resource-file src="src/android/libs/armeabi/libZAandroid.so" target="libs/armeabi/libZAandroid.so" />
+		<resource-file src="src/android/libs/armeabi/libdpfpdd_tcd58.so" target="libs/armeabi/libdpfpdd_tcd58.so" />
+		
+		
+		<resource-file src="src/android/libs/armeabi-v7a/libbiofp_e_lapi.so" target="libs/armeabi-v7a/libbiofp_e_lapi.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libdpfj.so" target="libs/armeabi-v7a/libdpfj.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libdpfpdd.so" target="libs/armeabi-v7a/libdpfpdd.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libdpfpdd_4k.so" target="libs/armeabi-v7a/libdpfpdd_4k.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libdpfpdd_ptapi.so" target="libs/armeabi-v7a/libdpfpdd_ptapi.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libdpfpdd5000.so" target="libs/armeabi-v7a/libdpfpdd5000.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libdpfr6.so" target="libs/armeabi-v7a/libdpfr6.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libdpfr7.so" target="libs/armeabi-v7a/libdpfr7.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libdpuareu_jni.so" target="libs/armeabi-v7a/libdpuareu_jni.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libdpuvc.so" target="libs/armeabi-v7a/libdpuvc.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libFingerILA.so" target="libs/armeabi-v7a/libFingerILA.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libtfm.so" target="libs/armeabi-v7a/libtfm.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libZAandroid.so" target="libs/armeabi-v7a/libZAandroid.so" />
+		<resource-file src="src/android/libs/armeabi-v7a/libdpfpdd_tcd58.so" target="libs/armeabi-v7a/libdpfpdd_tcd58.so" />
+
+		<resource-file src="src/android/libs/arm64-v8a/libbiofp_e_lapi.so" target="libs/arm64-v8a/libbiofp_e_lapi.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libdpfj.so" target="libs/arm64-v8a/libdpfj.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libdpfpdd.so" target="libs/arm64-v8a/libdpfpdd.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libdpfpdd_4k.so" target="libs/arm64-v8a/libdpfpdd_4k.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libdpfpdd_ptapi.so" target="libs/arm64-v8a/libdpfpdd_ptapi.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libdpfpdd5000.so" target="libs/arm64-v8a/libdpfpdd5000.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libdpfr6.so" target="libs/arm64-v8a/libdpfr6.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libdpfr7.so" target="libs/arm64-v8a/libdpfr7.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libdpuareu_jni.so" target="libs/arm64-v8a/libdpuareu_jni.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libdpuvc.so" target="libs/arm64-v8a/libdpuvc.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libFingerILA.so" target="libs/arm64-v8a/libFingerILA.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libtfm.so" target="libs/arm64-v8a/libtfm.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libZAandroid.so" target="libs/arm64-v8a/libZAandroid.so" />
+		<resource-file src="src/android/libs/arm64-v8a/libdpfpdd_tcd58.so" target="libs/arm64-v8a/libdpfpdd_tcd58.so" />
+		
+    </platform>
+</plugin>
